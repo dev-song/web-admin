@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const session = require('express-session');
-const FileStore = require('session-file-store');
+const FileStore = require('session-file-store')(session);
 
 const port = 3000;
 
