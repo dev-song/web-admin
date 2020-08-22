@@ -16,8 +16,10 @@ app.use(session({
 }));
 
 const indexRouter = require('./routes/index');
+const authRouter = require('./routes/auth');
 
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
 
 app.use((req, res, next) => {
   res.status(404).send('Error 404: Unable to find the webpage :X');
