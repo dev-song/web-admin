@@ -19,7 +19,7 @@ router.get('/login', (req, res) => {
   const page = template.HTML(title, body);
 
   res.send(page);
-})
+});
 
 router.post('/login_process', (req, res) => {
   const id = req.body['user-id'];
@@ -30,6 +30,16 @@ router.post('/login_process', (req, res) => {
   } else {
     res.send('Invalid account data... :X');
   }
+});
+
+router.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.error(err);
+    }
+
+    res.redirect('/');
+  })
 })
 
 module.exports = router;
