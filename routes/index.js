@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const template = require('../lib/template.js');
+const auth = require('../lib/auth.js');
 
 router.get('/', (req, res) => {
   const title = 'Session Testing';
@@ -12,7 +13,7 @@ router.get('/', (req, res) => {
       </section>
     </main>
   `;
-  const page = template.HTML(title, body);
+  const page = template.HTML(title, body, auth.loginStatus(req, res));
 
   res.send(page);
 });
