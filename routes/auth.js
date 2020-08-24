@@ -16,7 +16,10 @@ router.get('/login', (req, res) => {
       <input type='submit' value='Login' />
     </form>  
   `;
-  const page = template.HTML(title, body);
+  const header = `
+    <a href='/'>Home</a>
+  `;
+  const page = template.HTML(title, body, header);
 
   res.send(page);
 });
