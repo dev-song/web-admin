@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const fs = require('fs');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
@@ -14,6 +15,13 @@ app.use(session({
   saveUninitialized: true,
   store: new FileStore()
 }));
+
+app.get('*', (req, res, next) => {
+  fs.readFile('./data/product-data.json', 'utf-8', (err, data) => {
+    req.products = data;
+    next();
+  })
+})
 
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
