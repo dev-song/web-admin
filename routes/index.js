@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       ${auth.isUser(req, res) ? list : ''}
     </main>
   `;
-  const page = template.HTML(title, body, auth.loginStatus(req, res), auth.dataManagerUI(req, res));
+  const page = template.HTML(title, body, '', auth.loginStatus(req, res), auth.dataManagerUI(req, res));
 
   res.send(page);
 });
