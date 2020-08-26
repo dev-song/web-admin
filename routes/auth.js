@@ -7,29 +7,12 @@ const validAccount = {
   password: 'password'
 }
 
-router.get('/login', (req, res) => {
-  const title = 'Logging in...';
-  const body = `
-    <form class='log-in' action='/auth/login_process' method='post'>
-      <input type='text' name='user-id' placeholder='ID' />
-      <input type='password' name='user-pw' placeholder='Password' />
-      <input type='submit' value='Login' />
-    </form>  
-  `;
-  const header = `
-    <a href='/'>Home</a>
-  `;
-  const page = template.HTML(title, body, header);
-
-  res.send(page);
-});
-
-router.post('/login_process', (req, res) => {
+router.post('/login_validate', (req, res) => {
   const id = req.body['user-id'];
   const pw = req.body['user-pw'];
   if (id === validAccount.id && pw === validAccount.password) {
     req.session.isLoggedIn = true;
-    req.session.save(() => res.redirect('/'));
+    req.session.save(() => res.redirect('/admin'));
   } else {
     res.send('Invalid account data... :X');
   }
