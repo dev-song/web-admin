@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
   `;
   const header = auth.isUser(req, res) ? `
     <p class='greetings'>OOO님, 환영합니다</p>
+    <a href="/auth/logout">Logout</a>
   ` : `
     <form class='log-in' action='/auth/login_validate' method='post'>
       <h1 class='log-in__title'>Administrator Login</h1>
@@ -22,7 +23,7 @@ router.get('/', (req, res) => {
       <input type='submit' value='Login' />
     </form>
   `;
-  const page = template.HTML(title, body, header, auth.loginStatus(req, res), '');
+  const page = template.HTML('Administrator', body, header, '');
 
   res.send(page);
 })
