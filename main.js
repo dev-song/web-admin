@@ -24,9 +24,11 @@ app.get('*', (req, res, next) => {
 })
 
 const indexRouter = require('./routes/index');
+const adminRouter = require('./routes/admin');
 const authRouter = require('./routes/auth');
 
 app.use('/', indexRouter);
+app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
 
 app.use((req, res, next) => {
