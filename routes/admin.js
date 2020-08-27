@@ -4,26 +4,28 @@ const template = require('../lib/template.js');
 const auth = require('../lib/auth.js');
 
 router.get('/', (req, res) => {
-  const title = auth.isUser(req, res) ? `<h1 class='data__title'>Item List</h1>` : '';
-  const list = auth.isUser(req, res) ? template.products(req.products) : '';
-  const body = `
-    <main role="main">
-      ${title}
-      ${list}
+  const pageTitle = 'Administrator';
+  const body = auth.isUser(req, res) ? `
+    <main role='main'>
+      ${template.products(req.products)}
     </main>
-  `;
+  ` : '';
   const header = auth.isUser(req, res) ? `
-    <p class='greetings'>OOO님, 환영합니다</p>
-    <a href="/auth/logout">Logout</a>
+    <header class='header-admin'>
+      <p class='header__greetings'>OOO</p>
+      <a class='header__logout' href="/auth/logout">Logout</a>
+    </header>
   ` : `
-    <form class='log-in' action='/auth/login_validate' method='post'>
-      <h1 class='log-in__title'>Administrator Login</h1>
-      <input type='text' name='user-id' placeholder='ID' />
-      <input type='password' name='user-pw' placeholder='Password' />
-      <input type='submit' value='Login' />
-    </form>
+    <header class='header-login'>
+      <form class='log-in' action='/auth/login_validate' method='post'>
+        <h1 class='log-in__title'>Administrator Login</h1>
+        <input class='log-in__id' type='text' name='user-id' placeholder='ID' />
+        <input class='log-in__password' type='password' name='user-pw' placeholder='Password' />
+        <input class='log-in__submit' type='submit' value='Login' />
+      </form>
+    </header>
   `;
-  const page = template.HTML('Administrator', body, header, '');
+  const page = template.HTML(pageTitle, body, header);
 
   res.send(page);
 })
