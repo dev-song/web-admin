@@ -4,18 +4,18 @@ const template = require('../lib/template.js');
 const auth = require('../lib/auth.js');
 
 router.get('/', (req, res) => {
-  const title = 'Session Testing';
-  const list = template.products(req.products);
+  const title = 'Main Page';
   const body = `
     <main role="main">
       <h1 class="page-title">${title}</h1>
-      ${auth.isUser(req, res) ? list : ''}
     </main>
   `;
   const header = `
-    <a href='/admin'>관리자</a>
+    <header>
+      <a href='/admin'>관리자</a>
+    </header>
   `
-  const page = template.HTML(title, body, header, '');
+  const page = template.HTML(title, body, header);
 
   res.send(page);
 });
