@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   const pageTitle = 'Upload Item';
   const body = auth.isUser(req, res) ? `
     <main role='main'>
-      <form class='upload-item' action='/data/upload-process' method='post'>
+      <form class='upload-item' action='/upload-data/process' method='post'>
         <h1 class='upload-item__title'>Upload Item</h1>
         <input class='upload-item__building' type='number' name='building' placeholder='동 번호' />
         <input class='upload-item__space' type='number' name='space' placeholder='평형' />
