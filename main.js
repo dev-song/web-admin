@@ -26,10 +26,12 @@ app.get('*', (req, res, next) => {
 const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
 const authRouter = require('./routes/auth');
+const dataRouter = require('./routes/data');
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
+app.use('/data', dataRouter);
 
 app.use((req, res, next) => {
   res.status(404).send('Error 404: Unable to find the webpage :X');
