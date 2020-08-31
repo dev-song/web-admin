@@ -7,6 +7,13 @@ body {
   padding: 0;
 }
 
+main {
+  position: relative;
+  width: 80%;
+  max-width: 1280px;
+  margin: auto;
+}
+
 p {
   margin: 0;
 }
@@ -80,13 +87,6 @@ header {
   transform: translateY(-50%);
 }
 
-main {
-  position: relative;
-  width: 80%;
-  max-width: 1280px;
-  margin: auto;
-}
-
 .data__title {
   text-align: center;
 }
@@ -133,4 +133,16 @@ main {
   top: 50%;
   right: 2rem;
   transform: translateY(-50%);
+}
+
+.preview-image__container {
+  width: 8rem;
+  height: 8rem;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
 }
