@@ -4,7 +4,7 @@ const fs = require('fs');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
-const port = 3000;
+const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -42,6 +42,6 @@ app.use((err, req, res, next) => {
   res.status(500).send(`Something's wrong... :(`);
 })
 
-app.listen(port, () => {
-  console.log(`The app is listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`The app is listening on port ${PORT}`);
 })
