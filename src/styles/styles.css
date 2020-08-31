@@ -117,3 +117,20 @@ main {
   display: flex;
   justify-content: space-between;
 }
+
+/***********************
+************* data
+***********************/
+
+.header-data {
+  position: relative;
+
+  text-align: center;
+}
+
+.header__link-home {
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+}

@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
   const header = auth.isUser(req, res) ? `
     <header class='header-data'>
       <p class='header__greetings'>OOO</p>
-      <a class='header__home' href="/">Home</a>
+      <a class='header__link-home' href="/">Home</a>
     </header>
   ` : '';
   const page = template.HTML(pageTitle, body, header);
