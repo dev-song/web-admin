@@ -1,5 +1,7 @@
 const imageInput = document.querySelector('.upload-item__image');
-const imagePreview = document.querySelector('.preview-images');
+const imagePreview = document.querySelector('.preview');
+const CONTAINER_CLASSNAME = 'preview-image__container'
+const IMAGE_CLASSNAME = 'preview-image';
 
 function handleImage() {
   console.dir(this);
@@ -20,7 +22,9 @@ function updateImagePreview() {
   } else {
     for (const image of images) {
       const container = document.createElement('figure');
+      container.classList.add(CONTAINER_CLASSNAME);
       const img = document.createElement('img');
+      img.classList.add(IMAGE_CLASSNAME);
       img.src = URL.createObjectURL(image);
       const caption = document.createElement('figcaption');
       caption.textContent = `Image name: ${image.name}`;
