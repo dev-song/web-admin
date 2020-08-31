@@ -13,6 +13,8 @@ router.get('/', (req, res) => {
         <input class='upload-item__space' type='number' name='space' placeholder='평형' />
         <input class='upload-item__description' type='text' name='description' placeholder='설명' />
         <input class='upload-item__image' type='file' name='images' />
+        <div class='preview-images'>
+        </div>
         <input class='upload-item__submit' type='submit' value='Upload' />
       </form>
     </main>
@@ -23,7 +25,8 @@ router.get('/', (req, res) => {
       <a class='header__link-home' href="/">Home</a>
     </header>
   ` : '';
-  const page = template.HTML(pageTitle, body, header);
+  const script = './scripts/script.js';
+  const page = template.HTML(pageTitle, body, header, script);
 
   res.send(page);
 })
