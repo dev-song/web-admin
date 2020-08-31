@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
         <input class='upload-item__building' type='number' name='building' placeholder='동 번호' />
         <input class='upload-item__space' type='number' name='space' placeholder='평형' />
         <input class='upload-item__description' type='text' name='description' placeholder='설명' />
+        <input class='upload-item__image' type='file' name='images' />
         <input class='upload-item__submit' type='submit' value='Upload' />
       </form>
     </main>
