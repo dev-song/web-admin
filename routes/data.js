@@ -27,4 +27,10 @@ router.get('/', (req, res) => {
   res.send(page);
 })
 
+router.post('/process', (req, res) => {
+  const { building, space, description } = req.body;
+  const id = new Date().getTime();
+  const cluster = Math.floor(parseInt(req.body.building) / 100).toString();
+})
+
 module.exports = router;
