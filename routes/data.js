@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const template = require('../lib/template.js');
 const auth = require('../lib/auth.js');
+const multer = require('multer');
+const upload = multer({ dest: 'data/uploads/' });
 
 router.get('/', (req, res) => {
   const pageTitle = 'Upload Item';
@@ -31,10 +33,12 @@ router.get('/', (req, res) => {
   res.send(page);
 })
 
-router.post('/process', (req, res) => {
+router.post('/process', upload.single('images'), (req, res) => {
   const { building, space, description } = req.body;
   const id = new Date().getTime();
   const cluster = Math.floor(parseInt(req.body.building) / 100).toString();
+
+  console.log(req.file);
 })
 
 module.exports = router;
