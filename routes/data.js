@@ -4,7 +4,15 @@ const template = require('../lib/template.js');
 const auth = require('../lib/auth.js');
 const data = require('../lib/data.js');
 const multer = require('multer');
-const upload = multer({ dest: 'data/uploads/' });
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './src/uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${Date.now()}.${data.getFileType(file.mimetype)}`);
+  }
+})
+const upload = multer({ storage: storage });
 
 const DATA_PATH = './data/product-data.json';
 
