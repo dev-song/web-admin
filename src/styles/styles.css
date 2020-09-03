@@ -116,10 +116,69 @@ header {
 .cluster__items {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.item__container {
+  position: relative;
+  width: 45%;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  background: cornsilk;
+}
+
+.item--title {
+  position: relative;
+  top: -1rem;
+  left: -1rem;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+
+  background: orchid;
+}
+
+.item--building {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.item--building::after {
+  content: '동';
+}
+
+.item--space::before {
+  content: '(';
+}
+
+.item--space::after {
+  content: '평)';
+}
+
+.item--images {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.item--image {
+  width: 45%;
+  min-height: 8rem;
+
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.item__delete-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 /***********************
-************* data
+********** upload-data
 ***********************/
 
 .header-data {
