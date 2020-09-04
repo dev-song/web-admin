@@ -25,10 +25,10 @@ router.get('/', (req, res) => {
   const pageTitle = 'Upload Item';
   const body = `
     <main role='main'>
-      <form class='upload-item' action='/upload-data/process' method='post' enctype='multipart/form-data'>
+      <form class='upload-item' action='/upload-data/process' method='post' enctype='multipart/form-data' onsubmit='return formValidate()'>
         <h1 class='upload-item__title'>Upload Item</h1>
-        <input class='upload-item__building' type='number' name='building' placeholder='동 번호' />
-        <input class='upload-item__space' type='number' name='space' placeholder='평형' />
+        <input class='upload-item__building' type='number' name='building' placeholder='동 번호' required />
+        <input class='upload-item__space' type='number' name='space' placeholder='평형' required />
         <input class='upload-item__description' type='text' name='description' placeholder='설명' />
         <input class='upload-item__image' type='file' name='images' multiple />
         <div class='preview'>

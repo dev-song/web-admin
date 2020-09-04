@@ -37,6 +37,21 @@ function updateImagePreview() {
   }
 }
 
+function formValidate() {
+  const building = document.querySelector('.upload-item__building').value;
+  const space = document.querySelector('.upload-item__space').value;
+
+  if (Number(building) > 10000) {
+    alert('동 번호가 올바르지 않습니다. 다시 한 번 확인해주세요.')
+    return false;
+  }
+
+  if (Number(space) > 200) {
+    alert('입력 가능한 최대 평수를 초과했습니다. 다시 한 번 확인해주세요.');
+    return false;
+  }
+}
+
 function init() {
   imageInput.addEventListener('change', handleImage);
 }
