@@ -31,7 +31,7 @@ const dataRouter = require('./routes/data');
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
-app.use('/upload-data', dataRouter);
+app.use('/data-manager', dataRouter);
 
 app.use((req, res, next) => {
   res.status(404).send('Error 404: Unable to find the webpage :X');
