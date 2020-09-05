@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
       <a class='header__link-home' href="/">Home</a>
     </header>
   `;
-  const script = './scripts/script.js';
+  const script = './scripts/script-data-manager.js';
   const page = template.HTML(pageTitle, body, header, script);
 
   res.send(page);
