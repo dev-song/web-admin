@@ -25,7 +25,8 @@ router.get('/', (req, res) => {
       </form>
     </header>
   `;
-  const page = template.HTML(pageTitle, body, header);
+  const script = './scripts/script-admin.js';
+  const page = template.HTML(pageTitle, body, header, script);
 
   res.send(page);
 })
