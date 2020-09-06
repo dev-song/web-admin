@@ -26,6 +26,7 @@ function openUpdateOverlay(e) {
       <input class='update-item__description' type='text' name='description' placeholder='설명' value='${description}' />
       <p class='update-image__instruction'>이미지 수정은 지원되지 않습니다. 매물을 삭제하고 새로 업로드해주세요.</p>
       <input class='update-item__submit' type='submit' value='Update' />
+      <button class='update-item__close-button'>X</button>
     </form>
   `;
 }

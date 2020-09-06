@@ -197,6 +197,12 @@ header {
   margin-top: 0;
 }
 
+.update-item__close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
 /***********************
 ********** upload-data
 ***********************/
