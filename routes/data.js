@@ -81,4 +81,13 @@ router.get('/delete/:id', (req, res) => {
   res.redirect('/admin');
 })
 
+router.post('/update/:id', (req, res) => {
+  const id = req.params.id;
+  const { building, space, description } = req.body;
+  console.log('updating...');
+
+  data.updateItemData(DATA_PATH, id, building, space, description);
+  res.redirect('/admin');
+})
+
 module.exports = router;
