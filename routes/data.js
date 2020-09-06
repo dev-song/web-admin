@@ -15,6 +15,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 const DATA_PATH = './data/product-data.json';
+const IMAGE_FOLDER_PATH = './src/uploads';
 
 router.get('/', (req, res) => {
   if (!auth.isUser(req, res)) {
@@ -77,7 +78,7 @@ router.post('/process', upload.array('images'), (req, res) => {
 router.get('/delete/:id', (req, res) => {
   const id = req.params.id;
 
-  data.deleteItemData(DATA_PATH, id);
+  data.deleteItemData(DATA_PATH, IMAGE_FOLDER_PATH, id);
   res.redirect('/admin');
 })
 
