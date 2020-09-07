@@ -53,6 +53,7 @@ function handleClustersFold(e) {
 
   const clusterContent = e.target.parentNode.querySelector('.cluster__items');
   clusterContent.classList.toggle('cluster__items--hidden');
+  e.target.textContent = clusterContent.classList.contains('cluster__items--hidden') ? '▼ 펼치기' : '▼ 접기';
 }
 
 function openImageOverlay(e) {
