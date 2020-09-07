@@ -110,7 +110,7 @@ header {
   text-align: center;
 }
 
-.cluster--button-show-hide {
+.cluster__button-show-hide {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -121,6 +121,15 @@ header {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  transition: 0.3s all linear;
+}
+
+.cluster__items--hidden {
+  height: 0;
+  opacity: 0;
+
+  transition: none;
 }
 
 .item__container {
