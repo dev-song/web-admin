@@ -185,10 +185,21 @@ header {
   cursor: pointer;
 }
 
-.item__delete-button {
+.item__modify-button,
+.item__delete-link {
+  all: unset;
   position: absolute;
   top: 1rem;
   right: 1rem;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+
+  background: black;
+  color: white;
+}
+
+.item__modify-button {
+  right: 4.5rem;
 }
 
 /* overlay (item-update) */
@@ -221,6 +232,18 @@ header {
   padding: 1rem;
 
   background: salmon;
+}
+
+.expanded-image__container {
+  margin: 0;
+}
+
+.expanded-image__title {
+  margin-top: 0;
+}
+
+.expanded-image {
+  width: 100%;
 }
 
 .expanded-image__close-button {
