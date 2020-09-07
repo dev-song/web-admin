@@ -69,7 +69,7 @@ function openImageOverlay(e) {
   }
 
   overlay.innerHTML = `
-    <figure class='expanded-image'>
+    <figure class='expanded-image__container'>
       <h1 class='expanded-image__title'>확대 이미지</h1>
       <img class='expanded-image' src=${src} />
       <button class='expanded-image__close-button' type='button'>X</button>
@@ -79,10 +79,35 @@ function openImageOverlay(e) {
   overlay.addEventListener('click', handleCloseButton);
 }
 
+function closeImageOverlay(overlay) {
+  overlay.parentNode.removeChild(overlay);
+}
+
+function handleImageOverlay(e) {
+  let overlay = document.querySelector(`.${IMAGE_OVERLAY_CLASSNAME}`);
+  if (!overlay) {
+    openImageOverlay(e);
+    return;
+  };
+
+  let currentNode = e.target;
+  let isInsideOverlay = false;
+  while (currentNode !== document.body) {
+    if (currentNode === overlay) {
+      isInsideOverlay = true;
+    }
+    currentNode = currentNode.parentNode;
+  }
+
+  if (!isInsideOverlay) {
+    closeImageOverlay(overlay);
+  }
+}
+
 function init() {
   dataSection.addEventListener('click', openUpdateOverlay);
   dataSection.addEventListener('click', handleClustersFold);
-  dataSection.addEventListener('click', openImageOverlay);
+  document.addEventListener('click', handleImageOverlay);
 }
 
 init();
