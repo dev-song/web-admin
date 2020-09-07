@@ -2,6 +2,7 @@ const dataSection = document.querySelector('.data');
 const UPDATE_OVERLAY_CLASSNAME = 'overlay__update-item';
 const UPDATE_BUTTON_CLASSNAME = 'item__modify-button';
 const DELETE_BUTTON_CLASSNAME = 'update-item__close-button';
+const FOLD_BUTTON_CLASSNAME = 'cluster__button-show-hide';
 
 function openUpdateOverlay(e) {
   if (!e.target.classList.contains(UPDATE_BUTTON_CLASSNAME)) {
@@ -43,8 +44,18 @@ function handleCloseButton(e) {
   overlay.parentNode.removeChild(overlay);
 }
 
+function handleFoldButton(e) {
+  if (!e.target.classList.contains(FOLD_BUTTON_CLASSNAME)) {
+    return;
+  }
+
+  const clusterContent = e.target.parentNode.querySelector('.cluster__items');
+  clusterContent.classList.toggle('cluster__items--hidden');
+}
+
 function init() {
   dataSection.addEventListener('click', openUpdateOverlay);
+  dataSection.addEventListener('click', handleFoldButton);
 }
 
 init();
