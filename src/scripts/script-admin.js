@@ -1,8 +1,10 @@
 const dataSection = document.querySelector('.data');
 const UPDATE_OVERLAY_CLASSNAME = 'overlay__update-item';
 const UPDATE_BUTTON_CLASSNAME = 'item__modify-button';
-const DELETE_BUTTON_CLASSNAME = 'update-item__close-button';
+const CLOSE_BUTTON_CLASSNAMES = ['update-item__close-button', 'expanded-image__close-button'];
 const FOLD_BUTTON_CLASSNAME = 'cluster__button-show-hide';
+const IMAGE_OVERLAY_CLASSNAME = 'overlay__expanded-image';
+const IMAGE_CLASSNAME = 'item--image';
 
 function openUpdateOverlay(e) {
   if (!e.target.classList.contains(UPDATE_BUTTON_CLASSNAME)) {
@@ -36,15 +38,15 @@ function openUpdateOverlay(e) {
 }
 
 function handleCloseButton(e) {
-  if (!e.target.classList.contains(DELETE_BUTTON_CLASSNAME)) {
+  if (!CLOSE_BUTTON_CLASSNAMES.includes(e.target.className)) {
     return;
   }
 
-  let overlay = document.querySelector(`.${UPDATE_OVERLAY_CLASSNAME}`);
+  const overlay = e.target.parentNode.parentNode;
   overlay.parentNode.removeChild(overlay);
 }
 
-function handleFoldButton(e) {
+function handleClustersFold(e) {
   if (!e.target.classList.contains(FOLD_BUTTON_CLASSNAME)) {
     return;
   }
@@ -53,9 +55,34 @@ function handleFoldButton(e) {
   clusterContent.classList.toggle('cluster__items--hidden');
 }
 
+function openImageOverlay(e) {
+  if (!e.target.classList.contains(IMAGE_CLASSNAME)) {
+    return;
+  }
+
+  const src = e.target.src;
+  let overlay = document.querySelector(`.${IMAGE_OVERLAY_CLASSNAME}`);
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = IMAGE_OVERLAY_CLASSNAME;
+    dataSection.appendChild(overlay);
+  }
+
+  overlay.innerHTML = `
+    <figure class='expanded-image'>
+      <h1 class='expanded-image__title'>확대 이미지</h1>
+      <img class='expanded-image' src=${src} />
+      <button class='expanded-image__close-button' type='button'>X</button>
+    </figure>
+  `;
+
+  overlay.addEventListener('click', handleCloseButton);
+}
+
 function init() {
   dataSection.addEventListener('click', openUpdateOverlay);
-  dataSection.addEventListener('click', handleFoldButton);
+  dataSection.addEventListener('click', handleClustersFold);
+  dataSection.addEventListener('click', openImageOverlay);
 }
 
 init();
