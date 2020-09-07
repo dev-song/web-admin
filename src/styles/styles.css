@@ -191,7 +191,7 @@ header {
   right: 1rem;
 }
 
-/* overlay */
+/* overlay (item-update) */
 .overlay__update-item {
   position: absolute;
   top: 10vh;
@@ -207,6 +207,23 @@ header {
 }
 
 .update-item__close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+/* overlay (expanded image) */
+.overlay__expanded-image {
+  position: absolute;
+  top: 10vh;
+  left: 1rem;
+  right: 1rem;
+  padding: 1rem;
+
+  background: salmon;
+}
+
+.expanded-image__close-button {
   position: absolute;
   top: 1rem;
   right: 1rem;
