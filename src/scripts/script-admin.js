@@ -1,6 +1,7 @@
 const dataSection = document.querySelector('.data');
 const UPDATE_OVERLAY_CLASSNAME = 'overlay__update-item';
 const UPDATE_BUTTON_CLASSNAME = 'item__modify-button';
+const DELETE_BUTTON_CLASSNAME = 'update-item__close-button';
 
 function openUpdateOverlay(e) {
   if (!e.target.classList.contains(UPDATE_BUTTON_CLASSNAME)) {
@@ -26,9 +27,20 @@ function openUpdateOverlay(e) {
       <input class='update-item__description' type='text' name='description' placeholder='설명' value='${description}' />
       <p class='update-image__instruction'>이미지 수정은 지원되지 않습니다. 매물을 삭제하고 새로 업로드해주세요.</p>
       <input class='update-item__submit' type='submit' value='Update' />
-      <button class='update-item__close-button'>X</button>
+      <button class='update-item__close-button' type='button'>X</button>
     </form>
   `;
+
+  overlay.addEventListener('click', handleCloseButton);
+}
+
+function handleCloseButton(e) {
+  if (!e.target.classList.contains(DELETE_BUTTON_CLASSNAME)) {
+    return;
+  }
+
+  let overlay = document.querySelector(`.${UPDATE_OVERLAY_CLASSNAME}`);
+  overlay.parentNode.removeChild(overlay);
 }
 
 function init() {
